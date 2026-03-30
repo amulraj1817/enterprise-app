@@ -6,7 +6,7 @@
 
 <style>
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex;
     justify-content: center;
@@ -14,19 +14,13 @@ body {
     height: 100vh;
 }
 
-/* Card UI */
 .container {
     background: white;
     padding: 30px;
     width: 320px;
     border-radius: 15px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     text-align: center;
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #333;
 }
 
 input {
@@ -76,13 +70,22 @@ button:hover {
 function login() {
     let u = document.getElementById("user").value;
     let p = document.getElementById("pass").value;
+    let result = document.getElementById("result");
 
+    // Check empty fields
+    if(u === "" || p === "") {
+        result.innerText = "Please enter all fields";
+        result.style.color = "orange";
+        return;
+    }
+
+    // Check credentials
     if(u === "admin" && p === "1234") {
-        document.getElementById("result").innerText = "Login Successful";
-        document.getElementById("result").style.color = "green";
+        result.innerText = "Login Successful";
+        result.style.color = "green";
     } else {
-        document.getElementById("result").innerText = "Login Failed";
-        document.getElementById("result").style.color = "red";
+        result.innerText = "Invalid Credentials";
+        result.style.color = "red";
     }
 }
 </script>
